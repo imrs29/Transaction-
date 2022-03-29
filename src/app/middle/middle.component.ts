@@ -11,6 +11,6 @@ export class MiddleComponent implements OnInit {
 
   ngOnInit(): void {}
   Submission(): void {
-    this.router.navigate(['/Submission']);
+    this.router.navigate([`/Submission`]);
   }
 }
