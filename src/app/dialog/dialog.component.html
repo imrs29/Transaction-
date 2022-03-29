@@ -1,0 +1,88 @@
+<h1 mat-dialog-title>Add Transaction Form</h1>
+<div mat-dialog-content>
+  <form [formGroup]="TransactionForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Company Name</mat-label>
+      <input formControlName="CompanyName" matInput placeholder="Name" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>ID Number</mat-label>
+      <input formControlName="IDNumber" matInput placeholder="ID" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>ABA</mat-label>
+      <input formControlName="ABA" matInput placeholder="Number" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Account</mat-label>
+      <input formControlName="Account" matInput placeholder="Number" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Amount</mat-label>
+      <input formControlName="Amount" matInput placeholder="Number" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Transaction Type</mat-label>
+      <mat-select formControlName="TransactionType" placeholder="Type">
+        <mat-option value="CCD">CCD</mat-option>
+        <mat-option value="PPD">PPD</mat-option>
+        <mat-option value="Online">Online</mat-option>
+        <mat-option value="Offline">Offline</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Pre Note</mat-label>
+      <input matInput placeholder="Name" />
+      <section class="example-section">
+        <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+        <mat-checkbox class="example-margin" [disabled]="true"
+          >Disabled</mat-checkbox
+        >
+      </section>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Hold</mat-label>
+      <input matInput placeholder="Name" />
+      <section class="example-section">
+        <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+        <mat-checkbox class="example-margin" [disabled]="true"
+          >Disabled</mat-checkbox
+        >
+      </section>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Hold Date</mat-label>
+
+      <input formControlName="HoldDate" matInput [matDatepicker]="picker" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <label for=""><h1>Transaction Fresh</h1></label>
+    <mat-radio-group class="example-radio-group">
+      <mat-radio-button
+        class="example-radio-button"
+        *ngFor="let fresh of freshnessList"
+        [value]="fresh"
+      >
+        {{ fresh }}
+      </mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field appearance="outline">
+      <mat-label>Pause circle filled</mat-label>
+      <input matInput type="number" placeholder="Name" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Comment</mat-label>
+      <textarea matInput></textarea>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button style="margin-left: 8px" mat-raised-button color="primary" (click)="addTransaction()">
+    {{actionBtn}}
+  </button>
+</div>
